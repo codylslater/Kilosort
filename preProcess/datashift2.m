@@ -113,9 +113,12 @@ if getOr(ops, 'fig', 1)
     ylabel('drift (um)')
     title('Estimated drift traces')
     drawnow
+
+    saveas(gca,strcat(ops.save_fig_path,'_traces'),'fig');
     
     figure;
     set(gcf, 'Color', 'w')
+
     % raster plot of all spikes at their original depths
     st_shift = st3(:,2); %+ imin(batch_id)' * dd;
     for j = spkTh:100
@@ -132,6 +135,9 @@ if getOr(ops, 'fig', 1)
     ylabel('spike position (um)')
     title('Drift map')
     
+    saveas(gca,strcat(ops.save_fig_path,'_driftmap'),'fig');
+
+
 end
 %%
 % convert to um 
